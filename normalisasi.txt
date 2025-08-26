@@ -1,0 +1,33 @@
+deo:deodorant
+niv:nivea
+nv:nivea
+nva:nivea
+nvea:nivea
+nive:nivea
+niveam:nivea
+b & w:black & white
+sp:spot
+drk:dark
+s/p=sun protectionck:cool kick
+ckgreen:cool kick green
+ckgreen50:cool kick green 50
+niveak:nivea
+prffoam100:pore foam 100
+deoro:deodoran
+w:white
+ltn:lotion
+200:200ml
+r on:roll on
+r.on:roll on
+m:men
+pr&bty:pearl & beauty
+r/on:roll on
+invs:invisible
+r:roll
+on:on
+greensoml:green 50ml
+e/b:extra bright
+bserum:body serum
+hjb:hijab
+hijb:hijab
+ro:roll

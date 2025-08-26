@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+psycopg2
+python-dotenv
+Pillow
+fuzzywuzzy
+pandas
+sentence-transformers
+google-generativeai
+pandas
+openpyxl
+python-multipart
+python-Levenshtein

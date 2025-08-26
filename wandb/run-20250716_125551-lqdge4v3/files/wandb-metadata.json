@@ -1,0 +1,28 @@
+{
+  "os": "Windows-10-10.0.26100-SP0",
+  "python": "CPython 3.11.9",
+  "startedAt": "2025-07-16T05:55:51.681754Z",
+  "program": "d:\\pkl\\ml1\\machine learning\\tuning.ipynb",
+  "codePath": "machine learning\\tuning.ipynb",
+  "codePathLocal": "tuning.ipynb",
+  "git": {
+    "remote": "https://github.com/NaekoRA/ocr_machine_learning.git",
+    "commit": "60e8c7b87b5cd81003081df8253816d04cdb6665"
+  },
+  "email": "naekorashi@gmail.com",
+  "root": "d:\\pkl\\ml1\\machine learning",
+  "host": "Naeko",
+  "executable": "d:\\pkl\\env\\Scripts\\python.exe",
+  "cpu_count": 2,
+  "cpu_count_logical": 4,
+  "disk": {
+    "/": {
+      "total": "367000547328",
+      "used": "55687237632"
+    }
+  },
+  "memory": {
+    "total": "4067745792"
+  },
+  "writerId": "6tnrgnl2ywone6yrg26yb3cen9jol38f"
+}
