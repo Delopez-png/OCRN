@@ -302,10 +302,9 @@ def insert_ocr_results_into_db(ocr_data):
             print(f"Memproses faktur: {doc.get('invoice_number')}")
             
             # --- Masukkan data ke tabel ocr_items ---
-            # Menghapus phone dan email dari INSERT karena tidak ada di tabel
             sql_insert_item = """
-                INSERT INTO ocr_items (invoice_number, tanggal, nama_toko, alamat, total_belanja)
-                VALUES (%s, %s, %s, %s, %s)
+                INSERT INTO ocr_items (invoice_number, tanggal, nama_toko, alamat, phone, email, total_belanja)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
                 RETURNING id;
             """
             
@@ -315,6 +314,8 @@ def insert_ocr_results_into_db(ocr_data):
                 doc.get('tanggal'),
                 merchant_info.get('name'),
                 merchant_info.get('address'),
+                merchant_info.get('phone'),
+                merchant_info.get('email'),
                 doc.get('grand_total')
             ))
             
@@ -322,19 +323,21 @@ def insert_ocr_results_into_db(ocr_data):
             print(f"Data faktur berhasil dimasukkan dengan ID: {receipt_id}")
 
             # --- Masukkan data ke tabel ocr_results untuk setiap item ---
-            # Menyesuaikan query dan data yang dimasukkan agar sesuai dengan skema tabel
             sql_insert_result = """
                 INSERT INTO ocr_results (
                     receipt_id, ocr_name, ocr_quantity, ocr_price, ocr_total,
-                    text_accuracy, matched_item_id, matched_name, is_correct
+                    text_accuracy, matched_item_id, matched_name, keywords, is_correct
                 )
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
             """
 
             items_to_insert = doc.get('items', [])
             for item in items_to_insert:
                 ocr_result = item.get('ocr_result', {})
                 
+                # Mengambil keywords dari field 'typo'
+                keywords_list = list(ocr_result.get('typo', {}).keys())
+
                 is_correct = True if ocr_result.get('hasil') == 'benar' else False
                 
                 cursor.execute(sql_insert_result, (
@@ -346,6 +349,7 @@ def insert_ocr_results_into_db(ocr_data):
                     ocr_result.get('accuration'),
                     item.get('id'),
                     item.get('name'),
+                    keywords_list,
                     is_correct,
                 ))
             
